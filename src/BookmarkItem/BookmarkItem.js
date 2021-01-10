@@ -1,5 +1,6 @@
 import React from "react";
 import Rating from "../Rating/Rating";
+import PropTypes from "prop-types";
 import "./BookmarkItem.css";
 
 export default function BookmarkItem(props) {
@@ -26,15 +27,15 @@ export default function BookmarkItem(props) {
   );
 }
 
-BookmarkItem.defaultProps = {
-  onClickDelete: () => {},
-  rating: 1,
-  description: "",
-};
-
-Bookmark.propTypes = {
+BookmarkItem.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   rating: PropTypes.number,
   description: PropTypes.string,
+};
+
+BookmarkItem.defaultProps = {
+  onClickDelete: () => {},
+  rating: 1,
+  description: "",
 };
