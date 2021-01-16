@@ -1,97 +1,37 @@
+// import react
 import React, { Component } from "react";
+// import css file
+import "./Rating.css";
+// import Bookmark app component
+import BookmarkApp from "./BookmarkApp/BookmarkApp";
+// import AddBookmark component
 import AddBookmark from "./AddBookmark/AddBookmark";
-import BookmarkList from "./BookmarkList/BookmarkList";
-import Nav from "./Nav/Nav";
-import config from "./config";
-import Rating from "./Rating/Rating";
-import "./App.css";
 
+// create sample test data
 const bookmarks = [
-  // {
-  //   id: 0,
-  //   title: 'Google',
-  //   url: 'http://www.google.com',
-  //   rating: '3',
-  //   desc: 'Internet-related services and products.'
-  // },
-  // {
-  //   id: 1,
-  //   title: 'Thinkful',
-  //   url: 'http://www.thinkful.com',
-  //   rating: '5',
-  //   desc: '1-on-1 learning to accelerate your way to a new high-growth tech career!'
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Github',
-  //   url: 'http://www.github.com',
-  //   rating: '4',
-  //   desc: 'brings together the world\'s largest community of developers.'
-  // }
+  {
+    title: "Thinkful",
+    url: "http://www.thinkful.com",
+    rating: "5",
+    description: "A place to receive great programming instruction"
+  },
+  {
+    title: "Google",
+    url: "http://www.google.com",
+    rating: "3",
+    description: "Where to go for all your coding problems"
+  }
 ];
 
-class App extends Component {
-  state = {
-    page: "list",
-    bookmarks,
-    error: null,
-  };
+// construct class component with two children components
 
-  changePage = (page) => {
-    this.setState({ page });
-  };
-
-  setBookmarks = (bookmarks) => {
-    this.setState({
-      bookmarks,
-      error: null,
-      page: "list",
-    });
-  };
-
-  addBookmark = (bookmark) => {
-    this.setState({
-      bookmarks: [...this.state.bookmarks, bookmark],
-    });
-  };
-
-  componentDidMount() {
-    fetch(config.API_ENDPOINT, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${config.API_KEY}`,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(res.status);
-        }
-        return res.json();
-      })
-      .then(this.setBookmarks)
-      .catch((error) => this.setState({ error }));
-  }
-
+export default class App extends Component {
   render() {
-    const { page, bookmarks } = this.state;
     return (
-      <main className="App">
-        <Rating value={5} />
-        <h1>Bookmarks!</h1>
-        <Nav clickPage={this.changePage} />
-        <div className="content" aria-live="polite">
-          {page === "add" && (
-            <AddBookmark
-              onAddBookmark={this.addBookmark}
-              onClickCancel={() => this.changePage("list")}
-            />
-          )}
-          {page === "list" && <BookmarkList bookmarks={bookmarks} />}
-        </div>
-      </main>
+      <div className="App">
+        <AddBookmark />
+        <BookmarkApp bookmarks={bookmarks} />
+      </div>
     );
   }
 }
-
-export default App;
