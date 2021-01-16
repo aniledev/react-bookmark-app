@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react-bookmark-app/static/js/runtime~main.ff94a5c4.js"
   },
   {
-    "revision": "39b9d10638ff374206b858ecaf50e9fd",
+    "revision": "b1d0140984bc60540a1757333719081f",
     "url": "/react-bookmark-app/index.html"
   }
 ];
