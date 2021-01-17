@@ -1,5 +1,5 @@
 // import react component
-import React, { Component } from "react";
+import Reac from "react";
 
 // import css file
 import "./BookmarkItem.css";
