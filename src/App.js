@@ -26,6 +26,14 @@ const bookmarks = [
 // construct class component with two children components
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookmarks: [],
+      showAddForm: false
+    };
+  }
+
   render() {
     return (
       <div className="App">
