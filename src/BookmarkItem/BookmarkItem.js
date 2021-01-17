@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 // import css file
-import "./BookmarkItem";
+import "./BookmarkItem.css";
 // import children components
 import Rating from "../Rating/Rating";
 

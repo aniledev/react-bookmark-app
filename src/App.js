@@ -1,7 +1,7 @@
 // import react
 import React, { Component } from "react";
 // import css file
-import "./Rating.css";
+import "./App.css";
 // import Bookmark app component
 import BookmarkApp from "./BookmarkApp/BookmarkApp";
 // import AddBookmark component
