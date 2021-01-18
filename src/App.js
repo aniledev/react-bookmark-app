@@ -34,12 +34,14 @@ export default class App extends Component {
     };
   }
 
+  // add conditional display based on state
   render() {
-    return (
-      <div className="App">
-        <BookmarkApp bookmarks={bookmarks} />
-        <AddBookmark />
-      </div>
+    const page = this.state.showAddForm ? (
+      <AddBookmark />
+    ) : (
+      <BookmarkApp bookmarks={this.state.bookmarks} />
     );
+
+    return <div className="App">{page}</div>;
   }
 }
