@@ -84,6 +84,12 @@ export default class AddBookmark extends Component {
 
   // add value prop to each form input so the input always displays whatever value is in the state
   render() {
+    const error = this.state.error ? (
+      <div className="error">{this.state.error}</div>
+    ) : (
+      ""
+    );
+
     return (
       <div className="AddBookmark">
         <h2>Add Bookmark</h2>
