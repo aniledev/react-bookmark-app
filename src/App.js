@@ -40,6 +40,14 @@ export default class App extends Component {
     });
   }
 
+  addBookmark(bookmark) {
+    this.setState({
+      // use the spread operator to add to the end of the array
+      bookmarks: [...this.state.bookmarks, bookmark],
+      showAddForm: false
+    });
+  }
+
   // WHY USE COMPONENT DID MOUNT TO FETCH DATA????
   componentDidMount() {
     const url = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
