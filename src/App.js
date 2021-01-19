@@ -34,6 +34,43 @@ export default class App extends Component {
     };
   }
 
+  // WHY USE COMPONENT DID MOUNT TO FETCH DATA????
+  componentDidMount() {
+    const url = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
+
+    // create an oject which represnts some options for the HTTP call
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer $2a$10$v7WjV5QEI09kAQXgN6/S0./knIrLHeGq47N6y0a0VlVUbtPSxUwBC",
+        "Content-Type": "application/json"
+      }
+    };
+
+    // use the fetch method to fetch data from the server and update the state with the new information
+    fetch(url, options)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Something went wrong. Please try again.");
+        }
+        return res;
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          bookmarks: data,
+          error: null
+        });
+      })
+      // use catch to catch all erors and update state
+      .catch(err => {
+        this.setState({
+          error: err.message
+        });
+      });
+  }
+
   // add conditional display based on state
   render() {
     const page = this.state.showAddForm ? (
