@@ -26,7 +26,7 @@ export default class AddBookmark extends Component {
           <input type="number" name="rating" id="rating" min="1" max="5" />
 
           <div className="AddBookmark__buttons">
-            <button>Cancel</button>
+            <button onClick={e => this.props.showForm(false)}>Cancel</button>
             <button type="submit">Save</button>
           </div>
         </form>
