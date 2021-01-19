@@ -46,8 +46,12 @@ export default class AddBookmark extends Component {
   // this method will construct a new bookmark object from the values in the state
   handleSubmit(e) {
     e.preventDefault();
-    const { title, url, description, rating } = this.state;
-    const bookmark = { title, url, description, rating };
+    const bookmark = (({ title, url, description, rating }) => ({
+      title,
+      url,
+      description,
+      rating
+    }))(this.state);
     const URL = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
     const options = {
       method: "POST",
@@ -93,7 +97,7 @@ export default class AddBookmark extends Component {
     return (
       <div className="AddBookmark">
         <h2>Add Bookmark</h2>
-        <form className="AddBookmark">
+        <form className="AddBookmark" onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="title">Title:</label>
           <input
             type="text"
