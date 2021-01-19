@@ -5,5 +5,9 @@ import "./Fab.css";
 
 // create function component
 export default function Fab() {
-  return <div className="Fab">&#43;</div>;
+  return (
+    <div className="Fab" onClick={e => this.props.showForm(true)}>
+      &#43;
+    </div>
+  );
 }

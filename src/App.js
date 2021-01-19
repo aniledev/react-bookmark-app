@@ -34,11 +34,17 @@ export default class App extends Component {
     };
   }
 
+  setShowAddForm(show) {
+    this.setState({
+      showAddForm: show
+    });
+  }
+
   // WHY USE COMPONENT DID MOUNT TO FETCH DATA????
   componentDidMount() {
     const url = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
 
-    // create an oject which represnts some options for the HTTP call
+    // create an object which represents some options for the HTTP call
     const options = {
       method: "GET",
       headers: {
@@ -63,7 +69,7 @@ export default class App extends Component {
           error: null
         });
       })
-      // use catch to catch all erors and update state
+      // use catch to catch all errors and update state
       .catch(err => {
         this.setState({
           error: err.message
@@ -76,7 +82,10 @@ export default class App extends Component {
     const page = this.state.showAddForm ? (
       <AddBookmark />
     ) : (
-      <BookmarkApp bookmarks={this.state.bookmarks} />
+      <BookmarkApp
+        bookmarks={this.state.bookmarks}
+        showForm={this.setShowAddForm(show)}
+      />
     );
 
     return <div className="App">{page}</div>;

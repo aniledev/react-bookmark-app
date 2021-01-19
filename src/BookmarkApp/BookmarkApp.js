@@ -15,7 +15,7 @@ export default class BookmarkApp extends Component {
       <div className="BookmarkApp">
         <h2>Bookmarks</h2>
         <BookmarkList bookmarks={this.props.bookmarks} />
-        <Fab />
+        <Fab showForm={this.props.showForm} />
       </div>
     );
   }
