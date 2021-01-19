@@ -88,7 +88,10 @@ export default class App extends Component {
   // add conditional display based on state
   render() {
     const page = this.state.showAddForm ? (
-      <AddBookmark showForm={show => this.setShowAddForm(show)} />
+      <AddBookmark
+        showForm={show => this.setShowAddForm(show)}
+        handleAdd={bookmark => this.addBookmark(bookmark)}
+      />
     ) : (
       <BookmarkApp
         bookmarks={this.state.bookmarks}
