@@ -48,7 +48,7 @@ export default class AddBookmark extends Component {
     e.preventDefault();
     const { title, url, description, rating } = this.state;
     const bookmark = { title, url, description, rating };
-    const url = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
+    const URL = "https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks";
     const options = {
       method: "POST",
       body: JSON.stringify(bookmark),
@@ -59,7 +59,7 @@ export default class AddBookmark extends Component {
       }
     };
 
-    fetch(url, options)
+    fetch(URL, options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later");
