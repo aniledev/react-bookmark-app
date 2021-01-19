@@ -84,7 +84,7 @@ export default class App extends Component {
     ) : (
       <BookmarkApp
         bookmarks={this.state.bookmarks}
-        showForm={this.setShowAddForm(show)}
+        showForm={show => this.setShowAddForm(show)}
       />
     );
 
